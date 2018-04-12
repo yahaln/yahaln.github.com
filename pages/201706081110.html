@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<meta name="viewport" content="width=640">
+
+		<link rel="stylesheet" href="../stylesheets/core.css" media="screen">
+		<link rel="stylesheet" href="../stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+		<link rel="stylesheet" href="../stylesheets/github-light.css">
+
+		<script type="text/javascript" src="../javascripts/modernizr.js"></script>
+		<script type="text/javascript" src="../javascripts/jquery/jquery-1.4.min.js"></script>
+		<script type="text/javascript" src="../javascripts/headsmart.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#main_content').headsmart()
+			})
+		</script>
+		<title>博客主页 by yahaln</title>
+	</head>
+
+	<body>
+		<a id="forkme_banner" href="https://github.com/yahaln">View on GitHub</a>
+		<div class="shell">
+
+			<header>
+				<span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>依文静雪’s BLOG</h1>
+            <h2>学无止境</h2>
+          </span>
+				<span class="left-tail"></span>
+				<span class="right-tail"></span>
+				</span>
+			</header>
+
+			<div id="no-downloads">
+				<span class="inner">
+        </span>
+			</div>
+
+			<span class="banner-fix"></span>
+
+			<section id="main_content">
+				<h1><p>Ionic2 Ionic Serve跨域问题解决方法</p></h1>
+				<p>简单来说，因为真机里网页的访问走的是file://协议，而非http://或https://，因此不会出现跨域问题，但是浏览器里开发调</p>
+				<p>试的时候，由于实际上是ionic的CLI在本地跑了一个小服务器，网页等资源都是通过http加载的，就会出现跨域问题。</p>
+				<p>解决这个其实很简单，后端服务器不需要做任何处理，只需要在ionic的配置文件（ionic.config.json）里加上proxy这个字段，</p>
+				<p>设置ionic代理</p>
+				<p>项目目录如下图所示：</p>
+				<p>修改红色圈圈文件</p>
+				<img src="../images/201706081110/ionic_config_json.png" />
+
+				<p>
+					<font style="font-weight:bold;font-style:italic;" size="4">文件ionic.config.json内容为：</font>
+				</p>
+
+				<p>{ </p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;"name": "Ionic2SexyGallery", </p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp; "app_id": "", </p>
+				<p>
+					<font style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;"proxies": [{ </font>
+				</p>
+				<p>
+					<font style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path": "/api",</font>
+				</p>
+				<p>
+					<font style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"proxyUrl": "http://www.tngou.net/tnfs/api"</font>
+				</p>
+				<p>
+					<font style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;}] </font>
+				</p>
+				<p>} </p>
+				<p>然后运行项目,红色圈圈表示代理已经配置，所有../api的uri都会被转为http://xxx.xxx.xxx.xxx:port/diandian/</p>
+					<img src="../images/201706081110/ionic_cmd.png" />
+
+				<div style="margin-left: auto;margin-right: auto;text-align: center;">
+					<a href="../index.html" style="align-items: center;">返回主页</a>
+				</div>
+			</section>
+
+			<footer>
+				<span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>Projects by <a href="https://github.com/yahaln">yahaln</a> can be found on <a href="https://github.com/yahaln">GitHub</a></p>
+          </span>
+				<span class="left-tail"></span>
+				<span class="right-tail"></span>
+				</span>
+				<p>Generated with
+					<a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+				<span class="octocat"></span>
+			</footer>
+
+		</div>
+
+	</body>
+
+</html>

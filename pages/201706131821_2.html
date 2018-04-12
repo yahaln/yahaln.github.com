@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<meta name="viewport" content="width=640">
+
+		<link rel="stylesheet" href="../stylesheets/core.css" media="screen">
+		<link rel="stylesheet" href="../stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+		<link rel="stylesheet" href="../stylesheets/github-light.css">
+
+		<script type="text/javascript" src="../javascripts/modernizr.js"></script>
+		<script type="text/javascript" src="../javascripts/jquery/jquery-1.4.min.js"></script>
+		<script type="text/javascript" src="../javascripts/headsmart.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#main_content').headsmart()
+			})
+		</script>
+		<title>博客主页 by yahaln</title>
+	</head>
+
+	<body>
+		<a id="forkme_banner" href="https://github.com/yahaln">View on GitHub</a>
+		<div class="shell">
+
+			<header>
+				<span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>依文静雪’s BLOG</h1>
+            <h2>学无止境</h2>
+          </span>
+				<span class="left-tail"></span>
+				<span class="right-tail"></span>
+				</span>
+			</header>
+
+			<div id="no-downloads">
+				<span class="inner"></span>
+			</div>
+
+			<span class="banner-fix"></span>
+
+			<section id="main_content">
+				<div style="overflow:auto">
+					<p> 7、找到config.xml文件，文件在工程根目录下，增加条目</p>
+					<p>
+						&lt;plugin name='com.synconset.imagepicker' spec='2.1.7' plugin/&gt;
+					</p>
+					<p>使用方法</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;/**</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;选择上传图片</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&nbsp;select()&nbsp;&nbsp;{</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;&nbsp;options:&nbsp;&nbsp;ImagePickerOptions&nbsp;&nbsp;=&nbsp;&nbsp;{</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"maximumImagesCount":&nbsp;&nbsp;2,</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"width":&nbsp;&nbsp;300,</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"height":&nbsp;&nbsp;300,</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"quality":&nbsp;&nbsp;100</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.imagePicker.getPictures(options).then((results)&nbsp;&nbsp;=>&nbsp;&nbsp;{</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.imagPaths&nbsp;&nbsp;=&nbsp;&nbsp;results;</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;for&nbsp;&nbsp;(var&nbsp;&nbsp;i&nbsp;&nbsp;=&nbsp;&nbsp;0;&nbsp;&nbsp;i&nbsp;&nbsp;
+						<&nbsp;&nbsp;results.length;&nbsp;&nbsp;i++)&nbsp;&nbsp;{</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;&nbsp;(i&nbsp;&nbsp;%&nbsp;&nbsp;2&nbsp;&nbsp;!=&nbsp;&nbsp;0)&nbsp;&nbsp;{</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Image&nbsp;&nbsp;URI:&nbsp;&nbsp;'&nbsp;&nbsp;+&nbsp;&nbsp;results[i]);</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;}</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;(err)&nbsp;&nbsp;=>&nbsp;&nbsp;{</p>
+							<p></p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("错误："&nbsp;&nbsp;+&nbsp;&nbsp;err);</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</p>
+							<p></p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;/**</p>
+							<p>&nbsp;&nbsp;*&nbsp;&nbsp;文件下载</p>
+							<p>&nbsp;&nbsp;*&nbsp;&nbsp;@param&nbsp;&nbsp;uri&nbsp;&nbsp;下载地址</p>
+							<p>&nbsp;&nbsp;*&nbsp;&nbsp;@param&nbsp;&nbsp;fileType文件的后缀，例如".png"</p>
+							<p>&nbsp;&nbsp;*/</p>
+							<p>public&nbsp;&nbsp;download(uri:&nbsp;&nbsp;string,&nbsp;&nbsp;fileType:&nbsp;&nbsp;string)&nbsp;&nbsp;{</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;&nbsp;fileTransfer:&nbsp;&nbsp;TransferObject&nbsp;&nbsp;=&nbsp;&nbsp;this.transfer.create();</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;//文件网络地址</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;&nbsp;file_path&nbsp;&nbsp;=&nbsp;&nbsp;this.service.getDefaultBaseUri()&nbsp;&nbsp;+&nbsp;&nbsp;uri;</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;//文件本地存放地址</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;&nbsp;file_store&nbsp;&nbsp;=&nbsp;&nbsp;this.service.getLocalPhotoURI()&nbsp;&nbsp;+&nbsp;&nbsp;this.service.getDefaultPhotoName()&nbsp;&nbsp;+&nbsp;&nbsp;"."&nbsp;&nbsp;+&nbsp;&nbsp;fileType;</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;fileTransfer.download(file_path,&nbsp;&nbsp;file_store).then((entry)&nbsp;&nbsp;=>&nbsp;&nbsp;{</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.img_current&nbsp;&nbsp;=&nbsp;&nbsp;entry.toURL();</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;(error)&nbsp;&nbsp;=>&nbsp;&nbsp;{</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;handle&nbsp;&nbsp;error</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;});</p>
+							<p></p>
+							<p>}</p>
+				</div>
+				<h2>二、文件传输插件file-transfer</h2>
+				<div>
+					<p>git项目地址如下：</p>
+
+					<a href="https://github.com/apache/cordova-plugin-file-transfer">https://github.com/apache/cordova-plugin-file-transfer</a>
+					<p>插件下载命令如下：</p>
+					<p>ionic cordova plugin add cordova-plugin-file-transfer</p>
+					<p>插件安装命令如下：</p>
+					<p> npm install --save @ionic-native/transfer</p>
+					<p>如果說網絡原因命令行下不來，可以使用上面離線的方式安裝，雖然比較費勁，但至少能用。</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;/**</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;上传</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;@param&nbsp;&nbsp;picPath</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&nbsp;upload(image:&nbsp;&nbsp;string)&nbsp;&nbsp;{</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;&nbsp;(isUndefined(image)&nbsp;&nbsp;||&nbsp;&nbsp;image&nbsp;&nbsp;==&nbsp;&nbsp;"")&nbsp;&nbsp;{</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("上传图片不能为空！");</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;&nbsp;options:&nbsp;&nbsp;FileUploadOptions&nbsp;&nbsp;=&nbsp;&nbsp;{</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fileKey":&nbsp;&nbsp;"file",</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fileName":&nbsp;&nbsp;image.substr(image.lastIndexOf('/')&nbsp;&nbsp;+&nbsp;&nbsp;1)&nbsp;&nbsp;+&nbsp;&nbsp;'.jpg',</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mimeType":&nbsp;&nbsp;"text/plain",</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"params":&nbsp;&nbsp;{"user_id":&nbsp;&nbsp;"yahaln"}</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.msg&nbsp;&nbsp;+=&nbsp;&nbsp;"图片："&nbsp;&nbsp;+&nbsp;&nbsp;this.imagPaths[0];</p>
+						<p></p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;&nbsp;file_url&nbsp;&nbsp;=&nbsp;&nbsp;"appAnnexHeadImgUpload/uploadImg.do";</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.msg&nbsp;&nbsp;+=&nbsp;&nbsp;"上传路径："&nbsp;&nbsp;+&nbsp;&nbsp;file_url;</p>
+						<p></p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;&nbsp;fileTransfer:&nbsp;&nbsp;TransferObject&nbsp;&nbsp;=&nbsp;&nbsp;this.transfer.create();</p>
+						<p></p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;&nbsp;url&nbsp;&nbsp;=&nbsp;&nbsp;this.service.getDefaultBaseUri()&nbsp;&nbsp;+&nbsp;&nbsp;file_url;</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.msg&nbsp;&nbsp;+=&nbsp;&nbsp;"上传路径："&nbsp;&nbsp;+&nbsp;&nbsp;url;</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileTransfer.upload(image,&nbsp;&nbsp;url,&nbsp;&nbsp;options,&nbsp;&nbsp;false)</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then((result:&nbsp;&nbsp;any)&nbsp;&nbsp;=>&nbsp;&nbsp;{</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.success(result);</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}).catch((error:&nbsp;&nbsp;any)&nbsp;&nbsp;=>&nbsp;&nbsp;{</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.failed(error);</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;};</p>
+						<p></p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;success&nbsp;&nbsp;=&nbsp;&nbsp;(result:&nbsp;&nbsp;any):&nbsp;&nbsp;void&nbsp;&nbsp;=>&nbsp;&nbsp;{</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(result);</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.msg&nbsp;&nbsp;+=&nbsp;&nbsp;result;</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;failed&nbsp;&nbsp;=&nbsp;&nbsp;(err:&nbsp;&nbsp;any):&nbsp;&nbsp;void&nbsp;&nbsp;=>&nbsp;&nbsp;{</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;&nbsp;code&nbsp;&nbsp;=&nbsp;&nbsp;err.code;</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Failed&nbsp;&nbsp;to&nbsp;&nbsp;upload&nbsp;&nbsp;image.&nbsp;&nbsp;Code:&nbsp;&nbsp;"&nbsp;&nbsp;+&nbsp;&nbsp;code);</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+				</div>
+				<div style="margin-left: auto;margin-right: auto;text-align: center;">
+
+					<a href="201706131821_1.html" style="align-items: center;">上一页</a>
+					<a href="../index.html" style="align-items: center;">返回主页</a>
+				</div>
+			</section>
+
+			<footer>
+				<span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>Projects by <a href="https://github.com/yahaln">yahaln</a> can be found on <a href="https://github.com/yahaln">GitHub</a></p>
+          </span>
+				<span class="left-tail"></span>
+				<span class="right-tail"></span>
+				</span>
+				<p>Generated with
+					<a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+				<span class="octocat"></span>
+			</footer>
+
+		</div>
+
+	</body>
+
+</html>

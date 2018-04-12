@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<meta name="viewport" content="width=640">
+
+		<link rel="stylesheet" href="../stylesheets/core.css" media="screen">
+		<link rel="stylesheet" href="../stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+		<link rel="stylesheet" href="../stylesheets/github-light.css">
+
+		<script type="text/javascript" src="../javascripts/modernizr.js"></script>
+		<script type="text/javascript" src="../javascripts/jquery/jquery-1.4.min.js"></script>
+		<script type="text/javascript" src="../javascripts/headsmart.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#main_content').headsmart()
+			})
+		</script>
+		<title>博客主页 by yahaln</title>
+	</head>
+
+	<body>
+		<a id="forkme_banner" href="https://github.com/yahaln">View on GitHub</a>
+		<div class="shell">
+
+			<header>
+				<span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>依文静雪’s BLOG</h1>
+            <h2>学无止境</h2>
+          </span>
+				<span class="left-tail"></span>
+				<span class="right-tail"></span>
+				</span>
+			</header>
+
+			<div id="no-downloads">
+				<span class="inner"></span>
+			</div>
+
+			<span class="banner-fix"></span>
+
+			<section id="main_content">
+				<h1>Ionic常用插件使用方法</h1>
+				
+				<p>ionic doc开发帮助文档地址：</p>
+				<a href="https://ionicframework.com/docs/native/transfer/">https://ionicframework.com/docs/native/transfer/</a>
+				<h2>一、图片选择器imagepicker</h2>
+				<div style="overflow:auto">
+					<p>git项目地址如下：</p>
+					<a href="https://github.com/Telerik-Verified-Plugins/ImagePicker">https://github.com/Telerik-Verified-Plugins/ImagePicker</a>
+					<p>插件下载命令如下：</p>
+
+					<p>phonegap plugin add https://github.com/Telerik-Verified-Plugins/ImagePicker.git</p>
+					<p>或者</p>
+					<p>cordova plugin add https://github.com/Telerik-Verified-Plugins/ImagePicker.git</p>
+					<p>插件安装命令如下：</p>
+					<p> cnpm install --save @ionic-native/image-picker</p>
+					<p>如果网络通顺的话，会很快安装完毕，如果网络原因安装不上，可以选择本地安装。具体方法如下:</p>
+					<p>1、安装git,这里省略，百度上有</p>
+					<p>2、git clone https://github.com/Telerik-Verified-Plugins/ImagePicker.git下载到本地</p>
+					<p>3、找到项目plugins文件，将刚下载的插件copy进去。</p>
+					<p>4、找到plugins目录下的android.json文件，文件中installed_plugins选项增加条目如下：</p>
+					<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"com.synconset.imagepicker":&nbsp;&nbsp;{</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"PACKAGE_NAME":&nbsp;&nbsp;"io.ionic.starter"</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</p>
+					<p>5、找到plugins目录下的fetch.json文件增加条目如下:</p>
+
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"com.synconset.imagepicker":&nbsp;&nbsp;{</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"source":&nbsp;&nbsp;{</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;&nbsp;"registry",</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":&nbsp;&nbsp;"https://github.com/Telerik-Verified-Plugins/ImagePicker"</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"is_top_level":&nbsp;&nbsp;true,</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"variables":&nbsp;&nbsp;{}</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</p>
+
+					<p>6、工程目录下找到package.json，dependencies中增加条目</p>
+
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;"com.synconset.imagepicker": "2.1.7",</p>
+
+					<p>其中版本号"2.1.7"在插件文件夹中的plugin.xml中找</p>
+				</div>
+
+				<div style="margin-left: auto;margin-right: auto;text-align: center;">
+					<a href="../index.html" style="align-items: center;">返回主页</a>
+					<a href="201706131821_2.html" style="align-items: center;">下一页</a>
+				</div>
+			</section>
+
+			<footer>
+				<span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>Projects by <a href="https://github.com/yahaln">yahaln</a> can be found on <a href="https://github.com/yahaln">GitHub</a></p>
+          </span>
+				<span class="left-tail"></span>
+				<span class="right-tail"></span>
+				</span>
+				<p>Generated with
+					<a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+				<span class="octocat"></span>
+			</footer>
+
+		</div>
+
+	</body>
+
+</html>
